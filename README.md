@@ -34,3 +34,6 @@ Import the following modules and libraries:
 
 ## Credits
 
+* Tutorial referenced: [Predict Lottery Numbers using Artificial Intelligent Neural Network in Kera, Python by Arnold Dalby](https://youtu.be/vN_EuIfD42g)
+
+
