@@ -1,1 +1,2 @@
-# Long-Short-Term-Memory-LSTM-_Practice
+# Guess Length of Theoretical UFC Round - LSTM
+by Megan Tran
