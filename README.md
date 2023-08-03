@@ -36,7 +36,14 @@ Languages/ Technologies used:
 
 ## Setup
 
-Import the following modules and libraries:
+Import the following packages and libraries:
+
+```
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+
+```
   
 ## Using the Program
 
