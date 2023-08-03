@@ -36,6 +36,20 @@ Languages/ Technologies used:
 
 ## Setup
 
+Download the necessary packages:
+```
+pip install scikit-learn
+pip install pandas
+pip install keras
+pip install numpy
+```
+Check to see if version of Python/Python3 (if on jupyter Notebook) is used, this is to ensure packages work properly. Python 3.8 or better is recommended.
+
+```
+import sys
+sys.version
+```
+
 Import the following packages and libraries:
 
 ```
