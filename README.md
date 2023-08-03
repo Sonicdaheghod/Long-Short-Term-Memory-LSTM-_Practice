@@ -39,9 +39,14 @@ Languages/ Technologies used:
 Import the following packages and libraries:
 
 ```
+# Data processing
 import pandas as pd
 import numpy as np
+
+#Helps create the LSTM model
 from sklearn.preprocessing import StandardScaler
+from keras.models import Sequential
+from keras.layers import LSTM, Dense, Bidirectional, Dropout
 
 ```
   
