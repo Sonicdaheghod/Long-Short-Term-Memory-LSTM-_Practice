@@ -66,6 +66,73 @@ from keras.layers import LSTM, Dense, Bidirectional, Dropout
   
 ## Using the Program
 
+1) Data Preparation
+<img width="300" alt="image" src="https://github.com/Sonicdaheghod/Long-Short-Term-Memory-LSTM-_Practice/assets/68253811/b773d998-4cff-48ae-b22b-b5834c617d34">
+
+* columns are for round numbers, rows are for UFC fight game number
+* Data time values randomly generated using ``` np.random.uniform ```
+  
+2) Training LSTM Model
+
+First load the model, which is made up of four layers where data is processed and prevents overfitting for the model.
+
+```
+#import libraries
+
+from keras.models import Sequential
+from keras.layers import LSTM, Dense, Bidirectional, Dropout
+#import numpy as np
+
+batch_size = 55
+model = Sequential()
+model.add(Bidirectional(LSTM(240,
+            input_shape=(num_games, features_games),
+            return_sequences=True)))
+model.add(Dropout(0.2))
+model.add(Bidirectional(LSTM(240,
+            input_shape=(num_games, features_games),
+            return_sequences=True)))
+model.add(Dropout(0.2))
+model.add(Bidirectional(LSTM(240,
+            input_shape=(num_games, features_games),
+            return_sequences=True)))
+model.add(Dropout(0.2))
+model.add(Bidirectional(LSTM(240,
+            input_shape=(num_games, features_games),
+            return_sequences=False)))
+model.add(Dense(59))
+model.add(Dense(features_games))
+model.compile(loss="mse", optimizer="rmsprop", metrics=["accuracy"])
+
+```
+Then run this code to pass through sets of data from our randomly generated dataset into model multiple times for training.
+```
+model.fit(fight_train, fight_label, 
+         batch_size = 55, epochs = 250)
+
+```
+3) Evaluating Model
+   
+* This is done when we view the accuracy and loss when training the LSTM model.
+* Use code ``` model.compile(loss="mse", optimizer="rmsprop", metrics=["accuracy"]) ```
+<img width="600" alt="image" src="https://github.com/Sonicdaheghod/Long-Short-Term-Memory-LSTM-_Practice/assets/68253811/65f993a1-3c6f-473d-a78d-834ff66ce654">
+
+
+4) Making Predictions of Future UFC Fight Durations
+
+Use test data not used for training and put it through the trained LSTM model to predict duration of next UFC fight rounds.
+
+```
+#using times for last few games, randomly generated times 
+predict_nextUFC = np.random.uniform(min_float,max_float, size=(5,columns))
+scaled_predict= scaler.transform(predict_nextUFC)
+
+#Prediction
+scaled_predictfight_output = model.predict(np.array([scaled_predict]))
+print(scaler.inverse_transform(scaled_predictfight_output).astype(float)[0].round(2))
+
+```
+
 ## Credits
 
 * Tutorial referenced: [Predict Lottery Numbers using Artificial Intelligent Neural Network in Kera, Python by Arnold Dalby](https://youtu.be/vN_EuIfD42g)
